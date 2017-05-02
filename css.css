@@ -1,0 +1,21 @@
+required {
+	background-color:green;
+}
+
+#imagesfeuille {
+	background-image: url('images.jpg');
+	background-size: cover;
+}
+#imagebleu {
+	background-image: url('imagesbleu.jpeg');
+	background-size: cover;
+}
+
+#center {
+	text-align: center;
+	margin-top: 100px;
+}
+
+p {
+	font-size: 30px;
+}
