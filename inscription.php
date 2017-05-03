@@ -22,7 +22,7 @@ require_once("pdo.php");
        </form><br/>
 
        <p> entrer avec le pseudo apres inscription</p>
-       <form name="form2" action="message.php" method="POST">
+       <form name="form2" action="" method="POST">
          <input type="text" name="pseudo" id="pseudo" required placeholder="Pseudo"><br/>
 
          <input type="submit" name="submit2" value="se connecter">
