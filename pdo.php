@@ -30,12 +30,15 @@ else {
 }
 if(isset($_POST["submit2"])){
 	if($_POST["pseudo"] != ""){
-    $pseudo = $_POST['pseudo'];$req = $PDO->query("SELECT * FROM users WHERE pseudo ='$pseudo'");
+
+    $pseudo = $_POST['pseudo'];
+    $req = $PDO->query("SELECT * FROM users WHERE pseudo ='$pseudo'");
     $rows = $req->rowCount();
     if ($rows == 1){
       $req2 = $PDO->query("SELECT nom, prenom FROM users WHERE pseudo = '$pseudo'");
       $answer = $req2->fetch();
       session_start();
+
         //https://www.youtube.com/watch?v=98EF8yA6bfA&t=364s
       Header('Location: message.php');
     }else {
@@ -51,12 +54,16 @@ if(isset($_POST["submit2"])){
 
 if(isset($_POST["mssg"])){
 	if($_POST["message"] != "") {
-    $message = $_POST['message'];
+    //$message = $_POST['message'];
     // $message = htmlspecialchars($_POST['message']);
-		$req = $PDO->prepare('INSERT INTO chat(message) VALUES(:message)');
+		$req = $PDO->prepare('INSERT INTO chat (message) VALUES(:message)');
 		// $insertmsg->execute(array($message));
     $req->bindValue(':message', $_POST["message"]);
-
+    if ($req->execute()) {
+      echo "save";
+    }else {
+      echo "blabla";
+    }
     // $req2 = $PDO->prepare('SELECT count(pseudo) FROM chat WHERE pseudo');
     // $message2 = $req2->fetch();
 	}

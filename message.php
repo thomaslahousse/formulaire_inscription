@@ -2,7 +2,8 @@
 session_start();
 include_once("define.php");
 require_once("pdo.php");
-$pseudo = $_POST['pseudo'];
+//$pseudo = $_POST['pseudo'];
+$pseudo = "necromancien";
 echo "bonjour " . $pseudo ." bienvenue dans la zone de chat <br/>";
 //SELECT COUNT(pseudo) AS FROM WHERE
  ?>
@@ -27,7 +28,7 @@ echo "bonjour " . $pseudo ." bienvenue dans la zone de chat <br/>";
    </div>
 
    <?php
-   echo $pseudo . "message ". $message;
+   echo $pseudo . " : message ". $message;
    ?>
  </body>
  <!-- https://www.youtube.com/watch?v=eDz0nmQM3xw -->
