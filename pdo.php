@@ -11,23 +11,27 @@ try {
 
 
 if(isset($_POST["form1"])){
+  $pseudo = $_POST['pseudo'];
   if($_POST["nom"] != "" && $_POST["prenom"] != "" && $_POST["pseudo"] != ""){
-    $pseudo = $_POST['pseudo'];
-    $req = $PDO->prepare("SELECT * FROM users WHERE pseudo ='$pseudo'");
-    $req->execute();
-    $rows = $req->rowCount();
-    if($rows == 0){
-      $req2 = $PDO->prepare("INSERT INTO users (nom, prenom, pseudo) VALUES(:nom, :prenom, :pseudo)");
-      $req2->bindValue(':nom', $_POST["nom"]);
-      $req2->bindValue(':prenom', $_POST["prenom"]);
-      $req2->bindValue(':pseudo', $_POST["pseudo"]);
-        if ($req2->execute()) {
-          echo "votre formulaire a été rempli, tu peux entrer avec le pseudo";
-        }else {
-          echo "rempli le formulaire";
-        }
-    }else{
-    echo "pseudo deja pris";
+    if(strlen($pseudo) <= 20){
+      $req = $PDO->prepare("SELECT * FROM users WHERE pseudo ='$pseudo'");
+      $req->execute();
+      $rows = $req->rowCount();
+      if($rows == 0){
+        $req2 = $PDO->prepare("INSERT INTO users (nom, prenom, pseudo) VALUES(:nom, :prenom, :pseudo)");
+        $req2->bindValue(':nom', $_POST["nom"]);
+        $req2->bindValue(':prenom', $_POST["prenom"]);
+        $req2->bindValue(':pseudo', $_POST["pseudo"]);
+          if ($req2->execute()) {
+            echo "votre formulaire a été rempli, tu peux entrer avec le pseudo";
+          }else {
+            echo "rempli le formulaire";
+          }
+      }else{
+      echo "pseudo deja pris";
+      }
+    }else {
+      echo "ton pseudo ne doit pas faire plus de 20 caracrtères";
     }
   }else {
     echo "remplis tous les champs";
@@ -52,7 +56,7 @@ if(isset($_POST["form2"])){
         //https://www.youtube.com/watch?v=98EF8yA6bfA&t=364s
       Header('Location: message.php');
     }else {
-      echo "tu n'es pas inscrit, tu dois t'inscrire d'abord, Mr(Mme) ~".$pseudo;
+      echo "tu n'es pas inscrit, tu dois t'inscrire d'abord, Mr(Mme) ~ ".$pseudo;
       }
     }
     else {
