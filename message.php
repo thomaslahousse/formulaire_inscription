@@ -2,8 +2,10 @@
 session_start();
 include_once("define.php");
 require_once("pdo.php");
-$pseudo = $_POST['pseudo'];
-echo "bonjour " . $pseudo ." bienvenue dans la zone de chat <br/>";
+//$pseudo = $_POST['pseudo'];
+$pseudo = $_SESSION['pseudo'];
+
+echo "bonjour '" . $pseudo ."' bienvenue dans la zone de chat <br/>";
  ?>
  <!DOCTYPE html>
  <html>
@@ -21,9 +23,14 @@ echo "bonjour " . $pseudo ." bienvenue dans la zone de chat <br/>";
        <div><input type="submit" name="mssg" value="Envoyez le message"/></div>
      </form>
      <div id="conversation">
+       <?php
+          $req = $PDO ->prepare("SELECT message FROM chat ORDER BY id DESC");
+          $req ->execute();
+          $req2 = $req ->fetchall();
+          foreach($req2 as $data)
+           echo "$pseudo : $data->message<br>";
+        ?>
     </div>
-     <?php
-      ?>
    </div>
 
 
