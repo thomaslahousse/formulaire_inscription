@@ -2,7 +2,6 @@
 
 try {
   //$PDO = new PDO('mysql:host=localhost;dbname=formulaire_inscription;charset=utf8', 'root', '270395thomas'); //windows, wampserveur
-
   $PDO = new PDO('mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB, MYSQL_USER, MYSQL_PASSWD);
   $PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
   $PDO->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
@@ -14,15 +13,15 @@ try {
 if(isset($_POST["form1"])){
   if($_POST["nom"] != "" && $_POST["prenom"] != "" && $_POST["pseudo"] != ""){
     $pseudo = $_POST['pseudo'];
-    $req2 = $PDO->prepare("SELECT * FROM users WHERE pseudo ='$pseudo'");
-    $req2->execute();
-    $rows = $req2->rowCount();
+    $req = $PDO->prepare("SELECT * FROM users WHERE pseudo ='$pseudo'");
+    $req->execute();
+    $rows = $req->rowCount();
     if($rows == 0){
-      $req = $PDO->prepare("INSERT INTO users (nom, prenom, pseudo) VALUES(:nom, :prenom, :pseudo)");
-      $req->bindValue(':nom', $_POST["nom"]);
-      $req->bindValue(':prenom', $_POST["prenom"]);
-      $req->bindValue(':pseudo', $_POST["pseudo"]);
-        if ($req->execute()) {
+      $req2 = $PDO->prepare("INSERT INTO users (nom, prenom, pseudo) VALUES(:nom, :prenom, :pseudo)");
+      $req2->bindValue(':nom', $_POST["nom"]);
+      $req2->bindValue(':prenom', $_POST["prenom"]);
+      $req2->bindValue(':pseudo', $_POST["pseudo"]);
+        if ($req2->execute()) {
           echo "votre formulaire a été rempli, tu peux entrer avec le pseudo";
         }else {
           echo "rempli le formulaire";
@@ -41,10 +40,10 @@ if(isset($_POST["form2"])){
 	if($_POST["pseudo"] != ""){
 
     $pseudo = $_POST['pseudo'];
-    $req = $PDO->query("SELECT * FROM users WHERE pseudo ='$pseudo'");
+    $req = $PDO->prepare("SELECT * FROM users WHERE pseudo ='$pseudo'");
+    $req->execute();
     $rows = $req->rowCount();
     if ($rows == 1){
-      //$req2 = $PDO->query("SELECT nom, prenom FROM users WHERE pseudo = '$pseudo'");
       $req2 = $PDO->prepare("SELECT nom, prenom FROM users WHERE pseudo = '$pseudo'");
       $req2->execute();
       $answer = $req2->fetch();
@@ -71,11 +70,8 @@ if(isset($_POST["mssg"])){
       echo "le message a bien été envoyé <br/>";
       $message = $_POST['message'];
     }else {
-      echo "blabla";
+      echo "le message a mal été enregisté";
     }
-
-    // $req2 = $PDO->prepare('SELECT count * FROM chat WHERE pseudo');
-    // $message2 = $req2->fetch();
 
 	}
 }
