@@ -15,9 +15,9 @@ require_once("pdo.php");
     <div id="center">
        <p> s'inscrire </p>
        <form name="form1" action="" method="POST">
-         <input type="text" name="nom" id="nom" required placeholder="Nom"><br/>
-         <input type="text" name="prenom" id="prenom" required placeholder="Prénom"><br/>
-         <input type="text" name="pseudo" id="pseudo" required placeholder="Pseudo (20max)"><br/>
+         <input type="text" name="nom" id="nom"  placeholder="Nom"><br/>
+         <input type="text" name="prenom" id="prenom"  placeholder="Prénom"><br/>
+         <input type="text" name="pseudo" id="pseudo"  placeholder="Pseudo (20max)"><br/>
          <input type="submit" name="submit1" value="s'inscrire">
        </form><br/>
 

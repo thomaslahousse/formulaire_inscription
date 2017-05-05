@@ -19,3 +19,15 @@ required {
 p {
 	font-size: 30px;
 }
+textarea {
+	width: 400px;
+	height: 100px;
+}
+
+#conversation {
+	width: 400px;
+	height: 200px;
+	border: 1px solid blue;
+	background-color: #CFE2E8;
+	margin: auto;
+}
