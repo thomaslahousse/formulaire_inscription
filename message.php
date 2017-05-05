@@ -29,6 +29,7 @@ echo "bonjour '" . $pseudo ."' bienvenue dans la zone de chat <br/>";
           $req2 = $req ->fetchall();
           foreach($req2 as $data)
            echo "$pseudo : $data->message<br>";
+           //echo $data->lastname . " " . $data->firstname . " " . $data->email;
         ?>
     </div>
    </div>

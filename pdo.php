@@ -44,7 +44,9 @@ if(isset($_POST["form2"])){
     $req = $PDO->query("SELECT * FROM users WHERE pseudo ='$pseudo'");
     $rows = $req->rowCount();
     if ($rows == 1){
-      $req2 = $PDO->query("SELECT nom, prenom FROM users WHERE pseudo = '$pseudo'");
+      //$req2 = $PDO->query("SELECT nom, prenom FROM users WHERE pseudo = '$pseudo'");
+      $req2 = $PDO->prepare("SELECT nom, prenom FROM users WHERE pseudo = '$pseudo'");
+      $req2->execute();
       $answer = $req2->fetch();
       session_start();
       $_SESSION['pseudo'] = $_POST['pseudo'];

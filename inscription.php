@@ -1,4 +1,5 @@
 <?php
+//1 semaine jusqu'au 5 mai
 include_once("define.php");
 require_once("pdo.php");
  ?>
