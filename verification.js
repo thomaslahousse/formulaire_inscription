@@ -1,10 +1,10 @@
 $(document).ready(function() {
   $("#nom, #prenom, #pseudo").on('blur', function() {
 		if ($(this).val() == "") {
-			$(this).css("background", "red");
+			$(this).css("background", "#FF0066");
 		}
 		else {
-		$(this).css("background", "green");
+		$(this).css("background", "#00CCFF");
 		}
 	})
 

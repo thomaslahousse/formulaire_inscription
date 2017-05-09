@@ -19,15 +19,22 @@ required {
 p {
 	font-size: 30px;
 }
+
 textarea {
 	width: 400px;
 	height: 100px;
 }
 
 #conversation {
-	width: 400px;
-	height: 200px;
+	background-image: url('parquet.jpg');
+	width: 100%;
+	height: 250px;
 	border: 1px solid blue;
 	background-color: #CFE2E8;
 	margin: auto;
+}
+
+#message_envoi {
+	font-size: 20px;
+	color: yellow;
 }

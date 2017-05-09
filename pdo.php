@@ -37,7 +37,7 @@ if(isset($_POST["form1"])){
   }
 }
 else{
-  echo "bienvenue sur le site";
+  //echo "bienvenue sur le site";
 }
 if(isset($_POST["form2"])){
   if($_POST["pseudo"] != ""){
