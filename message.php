@@ -4,9 +4,8 @@ include_once("define.php");
 require_once("pdo.php");
 //$pseudo = $_POST['pseudo'];
 $pseudo = $_SESSION['pseudo'];
-
-echo "bonjour '" . $pseudo ."' bienvenue dans la zone de chat <br/>";
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +14,11 @@ echo "bonjour '" . $pseudo ."' bienvenue dans la zone de chat <br/>";
   <meta charset="utf-8">
 </head>
 <body id="imagebleu">
-
+  <p id="echo_pseudo">
+    <?php
+  echo "bonjour '" . $pseudo ."' bienvenue dans la zone de chat <br/>";
+  ?>
+  </p>
   <div id="center">
     <form method="POST" action="">
       <p> Message : </p>

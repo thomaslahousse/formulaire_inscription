@@ -19,7 +19,11 @@ required {
 p {
 	font-size: 30px;
 }
-
+#echo_pseudo {
+	font-size: 20px;
+	text-align: center;
+	margin-top: 10px;
+}
 textarea {
 	width: 400px;
 	height: 100px;
