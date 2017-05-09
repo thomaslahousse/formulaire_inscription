@@ -9,7 +9,6 @@ try {
   $e->getMessage();
 }
 
-
 if(isset($_POST["form1"])){
   $pseudo = $_POST['pseudo'];
   if($_POST["nom"] != "" && $_POST["prenom"] != "" && $_POST["pseudo"] != ""){
@@ -22,13 +21,13 @@ if(isset($_POST["form1"])){
         $req2->bindValue(':nom', $_POST["nom"]);
         $req2->bindValue(':prenom', $_POST["prenom"]);
         $req2->bindValue(':pseudo', $_POST["pseudo"]);
-          if ($req2->execute()) {
-            echo "votre formulaire a été rempli, tu peux entrer avec le pseudo";
-          }else {
-            echo "rempli le formulaire";
-          }
+        if ($req2->execute()) {
+          echo "votre formulaire a été rempli, tu peux entrer avec le pseudo";
+        }else {
+          echo "rempli le formulaire";
+        }
       }else{
-      echo "pseudo deja pris";
+        echo "pseudo deja pris";
       }
     }else {
       echo "ton pseudo ne doit pas faire plus de 20 caracrtères";
@@ -38,37 +37,34 @@ if(isset($_POST["form1"])){
   }
 }
 else{
-  // echo "tu dois surement etre deja inscrit !";
+  echo "bienvenue sur le site";
 }
 if(isset($_POST["form2"])){
-	if($_POST["pseudo"] != ""){
+  if($_POST["pseudo"] != ""){
 
     $pseudo = $_POST['pseudo'];
     $req = $PDO->prepare("SELECT * FROM users WHERE pseudo ='$pseudo'");
     $req->execute();
     $rows = $req->rowCount();
     if ($rows == 1){
-      $req2 = $PDO->prepare("SELECT nom, prenom FROM users WHERE pseudo = '$pseudo'");
+      /*$req2 = $PDO->prepare("SELECT nom, prenom FROM users WHERE pseudo = '$pseudo'");
       $req2->execute();
-      $answer = $req2->fetch();
+      $answer = $req2->fetch();*/
       session_start();
       $_SESSION['pseudo'] = $_POST['pseudo'];
-        //https://www.youtube.com/watch?v=98EF8yA6bfA&t=364s
       Header('Location: message.php');
     }else {
       echo "tu n'es pas inscrit, tu dois t'inscrire d'abord, Mr(Mme) ~ ".$pseudo;
-      }
-    }
-    else {
-      echo "tu dois t'inscrire";
     }
   }
-
-
+  else {
+    echo "tu dois t'inscrire";
+  }
+}
 
 if(isset($_POST["mssg"])){
-	if($_POST["message"] != "") {
-		$req = $PDO->prepare('INSERT INTO chat (pseudo, message) VALUES(:pseudo, :message)');
+  if($_POST["message"] != "") {
+    $req = $PDO->prepare('INSERT INTO chat (pseudo, message) VALUES(:pseudo, :message)');
     $req->bindValue(':message', $_POST["message"]);
     $req->bindValue(':pseudo', $_SESSION['pseudo']);
     if ($req->execute()) {
@@ -78,13 +74,7 @@ if(isset($_POST["mssg"])){
       echo "le message a mal été enregisté";
     }
 
-	}
+  }
 }
 
-
-
-
-
-
-
- ?>
+?>
