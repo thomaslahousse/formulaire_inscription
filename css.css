@@ -6,7 +6,7 @@ required {
 	background-image: url('images.jpg');
 	background-size: cover;
 }
-#imagebleu {
+#backgroundmessage {
 	background-image: url('imagesbleu.jpeg');
 	background-size: cover;
 }
@@ -31,7 +31,7 @@ textarea {
 
 #conversation {
 	background-image: url('parquet.jpg');
-	width: 100%;
+	width: 90%;
 	height: 250px;
 	border: 1px solid blue;
 	background-color: #CFE2E8;

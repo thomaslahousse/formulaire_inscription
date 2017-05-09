@@ -13,7 +13,7 @@ $pseudo = $_SESSION['pseudo'];
   <link rel="stylesheet" href="css.css" />
   <meta charset="utf-8">
 </head>
-<body id="imagebleu">
+<body id="backgroundmessage">
   <p id="echo_pseudo">
     <?php
   echo "bonjour '" . $pseudo ."' bienvenue dans la zone de chat <br/>";
