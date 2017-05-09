@@ -68,8 +68,9 @@ if(isset($_POST["form2"])){
 
 if(isset($_POST["mssg"])){
 	if($_POST["message"] != "") {
-		$req = $PDO->prepare('INSERT INTO chat (message) VALUES(:message)');
+		$req = $PDO->prepare('INSERT INTO chat (pseudo, message) VALUES(:pseudo, :message)');
     $req->bindValue(':message', $_POST["message"]);
+    $req->bindValue(':pseudo', $_SESSION['pseudo']);
     if ($req->execute()) {
       echo "le message a bien été envoyé <br/>";
       $message = $_POST['message'];
